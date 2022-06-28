@@ -78,3 +78,11 @@
        line: Banner /etc/issue.net
        state: present
        backrefs: true
+
+   - name: No root SSH
+     lineinfile:
+       path: /etc/ssh/sshd_config
+       regexp: '^PermitRootLogin yes'
+       line: PermitRootLogin no
+       state: present
+       backrefs: true

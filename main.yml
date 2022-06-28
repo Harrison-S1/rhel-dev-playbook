@@ -17,4 +17,5 @@
      - updateos
     # - firewall
      - os_hardening
-     - ssh_hardening                                                                             
+     - ssh_hardening
+     - packages                                                                             

@@ -1,0 +1,8 @@
+---
+
+- name: Install main user packages.
+  package:
+    name:
+      - git
+      - vim
+    state: latest

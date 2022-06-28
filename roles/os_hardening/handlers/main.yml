@@ -1,6 +1,6 @@
 ---
 
-- name: restart_auditd
+- name: restart_audit
   service:
     name: audit
     state: restarted
