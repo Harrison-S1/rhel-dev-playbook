@@ -1,18 +1,12 @@
 ---
-- name: Disable ipv6
-  lineinfile:
-    path: /etc/default/ufw
-    regexp: '^IPV6=yes'
-    line: IPV6=no
-    backrefs: true
 
-- name: Allow access to port 22 for ssh
-  ufw:
-   rule: allow
-   port: '22'
-  notify: restart_ufw 
-
-- name: Start service ufw
-  ansible.builtin.service:
-    name: ufw
-    state: started
+- name: FirewallD rules
+  firewalld:
+    permanent: yes
+    immediate: yes
+    port: "{{item.port}}/{{item.proto}}"
+    state: "{{item.state}}"
+    zone: "{{item.zone}}"
+  with_items:
+   - {port: "80", proto: "tcp", state: "enabled", zone: "public" }
+   - {port: "22", proto: "tcp", state: "enabled", zone: "public" }

@@ -13,9 +13,10 @@
      when: ansible_os_family == "RedHat"
 
   roles:
-    # - timezone
+     - packages 
+     - timezone
      - updateos
-    # - firewall
+     - firewall
      - os_hardening
      - ssh_hardening
      - packages                                                                             
