@@ -1,0 +1,20 @@
+---                                                                             
+                                                                                 
+- hosts: dev                                                                    
+  become: true                                                                  
+                                                                                 
+  pre_tasks:                                                                                                                
+ 
+   - name: refresh package cache (Rhel)
+     tags: always
+     dnf:
+       update_only: yes
+       update_cache: yes
+     when: ansible_os_family == "RedHat"
+
+  roles:
+    # - timezone
+     - updateos
+    # - firewall
+     - os_hardening
+     - ssh_hardening                                                                             

@@ -1,0 +1,11 @@
+---
+
+- name: restart_auditd
+  service:
+    name: audit
+    state: restarted
+
+- name: start_sysstat
+  service:
+    name: sysstat
+    state: started

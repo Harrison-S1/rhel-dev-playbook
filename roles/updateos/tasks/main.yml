@@ -1,0 +1,14 @@
+---
+
+- name: refresh package cache (Rhel)
+  tags: always
+  dnf:
+    update_only: yes
+    update_cache: yes
+  when: ansible_os_family == "RedHat"
+
+- name: upgrade packages
+  dnf:
+    name: '*'
+    state: latest
+  when: ansible_os_family == "RedHat"
